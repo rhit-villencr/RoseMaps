@@ -1,20 +1,30 @@
 SRC_Main Self_Made_Man 137.8
+
 Self_Made_Man SRC_Main 137.8
 Self_Made_Man SRC_Road_1 601
-SRC_Road_1 Self_Made_Man 601
 Self_Made_Man Bottom_Deming_SRC_Stairs 200
+
+SRC_Road_1 Self_Made_Man 601
+SRC_Road_1 SRC_West_Parking_Road_1 45
+
 Bottom_Deming_SRC_Stairs Self_Made_Man 200
 Bottom_Deming_SRC_Stairs Apartments_Road_6 580
-SRC_Road_1 SRC_West_Parking_Road_1 45
+
+
 SRC_West_Parking_Road_1 SRC_Road_1 45
 SRC_West_Parking_Road_1 SRC_West_Parking_Road_2 118
+
 SRC_West_Parking_Road_2 SRC_West_Parking_Road_1 118
 SRC_West_Parking_Road_2 Apartments_Road_5 81
+SRC_West_Parking_Road_2 Apartments_Road_4 70
+
 Apartments_Road_5 SRC_West_Parking_Road_2 81
+
 Apartments_Road_5 Apartments_Road_6 40
+Apartments_Road_5 Apartments_Road_4 61
+
 Apartments_Road_6 Apartments_Road_5 40
 Apartments_Road_6 Bottom_Deming_SRC_Stairs 580
-Apartments_Road_5 Apartments_Road_4 61
+
 Apartments_Road_4 Apartments_Road_5 61
-SRC_West_Parking_Road_2 Apartments_Road_4 70
 Apartments_Road_4 SRC_West_Parking_Road_2 70

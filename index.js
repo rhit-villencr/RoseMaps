@@ -4,14 +4,16 @@ function populateGraphFromText(textData) {
     const lines = textData.trim().split('\n');
 
     lines.forEach(line => {
-        const [source, destination, weight] = line.trim().split(' ');
-        const parsedWeight = parseFloat(weight);
+        if (line.length > 1) {
+            const [source, destination, weight] = line.trim().split(' ');
+            const parsedWeight = parseFloat(weight);
 
-        if (!graph[source]) {
-            graph[source] = {};
+            if (!graph[source]) {
+                graph[source] = {};
+            }
+
+            graph[source][destination] = parsedWeight;
         }
-
-        graph[source][destination] = parsedWeight;
     });
 
     return graph;
@@ -86,10 +88,10 @@ const findShortestPath = (graph, startNode, endNode) => {
     return results;
 };
 
-async function populateDropdowns(g){
+async function populateDropdowns(g) {
     let drop1 = document.getElementById("start-names")
     let drop2 = document.getElementById("end-names")
-    for(const key in g){
+    for (const key in g) {
         drop1.innerHTML += `<option>${key}</option>`
         drop2.innerHTML += `<option>${key}</option>`
     }
@@ -104,7 +106,6 @@ let g = populateGraphFromFile(filePath)
             console.log('Failed to fetch or parse the file.');
         }
     });
-
 populateDropdowns(await g)
 document.getElementById("submit").addEventListener("click", async function (e) {
     const e1 = document.getElementById("start-names").value
@@ -115,9 +116,9 @@ document.getElementById("submit").addEventListener("click", async function (e) {
     console.log("============================================================")
     const resultsDiv = document.getElementById("results-path")
     resultsDiv.innerHTML = "";
-    for(const n of path["path"]){
+    for (const n of path["path"]) {
         resultsDiv.innerHTML += `<ul class="node-item">${n}</ul>`
     }
-  });
+});
 
 
