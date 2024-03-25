@@ -1,0 +1,76 @@
+@startuml roseMap
+package presentation {
+    class MapManager {
+        -roseMap: Graph
+        -loader: Loader
+        +GraphManager(loader: Loader)
+        -loadMap(): Graph
+        +findShortestPath(beginningNodeId: String, destinationNodeId: String): List<Edge>
+        +getPathLength(List<Edge>): Double
+    }
+}
+
+package domain {
+    class Graph {
+        -map: Map<Node, Set<Edge>>
+        +Graph()
+        +addNode(nodeId: String): void
+        +addEdge(startNodeId: String, endNodeId: String, distance: Double): void
+        -getNode(nodeId: String): Node
+        +findShortestPath(beginningNodeId: String, destinationNodeId: String): List<Edge>
+        +getPathLength(List<Edge>): Double
+        +toString(): String
+    }
+
+    class Node {
+        -id: String
+        +Node(id: String)
+        +getId(): String
+        +toString(): String
+    }
+
+    class Edge {
+        -startNode: Node
+        -endNode: Node
+        -distance: Double
+        +Edge(startNode: Node, endNode: Node, distance: Double)
+        +getEndNode(): Node
+        +getDistance(): Double
+        +toString(): String
+    }
+
+    Graph ..> Edge
+    Edge ..> Node
+}
+
+package datasource {
+    interface Loader {
+        +{abstract}loadNodeIds(): List<String>
+        +{abstract}loadEdgeData(): List<EdgeData>
+    }
+
+    class LoaderByFile {
+        -NodeFileLocation: String
+        -EdgeFileLocation: String
+        +LoaderByFile(NodeFileLocation: String, EdgeFileLocation: String)
+        +loadNodeIds(): List<String>
+        +loadEdgeData(): List<EdgeData>
+    }
+
+    class EdgeData {
+        -startNodeId: String
+        -endNodeId: String
+        -distance: Double
+        +EdgeData(startNodeId: String, endNodeId: String, distance: Double)
+        +getStartNodeId(): String
+        +getEndNodeId(): String
+        +getDistance(): Double
+    }
+
+    LoaderByFile ..|> Loader
+    Loader ..> EdgeData
+}
+
+MapManager --> Graph
+MapManager --> Loader
+@enduml

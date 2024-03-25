@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="RoseMap" />
+        <module name="RoseMaps" />
       </profile>
     </annotationProcessing>
   </component>
