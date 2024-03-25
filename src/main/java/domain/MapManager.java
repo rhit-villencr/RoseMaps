@@ -31,7 +31,7 @@ public class MapManager{
         retString.append(beginningNodeId).append("\n");
         List<Edge> optimalPath = roseMap.findShortestPath(beginningNodeId, destinationNodeId);
         for (Edge e : optimalPath){
-            retString.append(e.destination().getLabel()).append("\n");
+            retString.append(e.destination().label()).append("\n");
         }
         retString.append("Total Distance: ").append(getPathLength(optimalPath)).append(" ft");
         return retString.toString();

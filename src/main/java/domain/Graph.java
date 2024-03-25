@@ -22,7 +22,7 @@ public final class Graph {
 
     private Node getNode(String label){
         for(Node k : map.keySet()){
-            if(k.getLabel().equals(label)){
+            if(k.label().equals(label)){
                 return k;
             }
         }
@@ -79,9 +79,9 @@ public final class Graph {
     public String toString() {
         StringBuilder printString = new StringBuilder();
         for(Node k : map.keySet()){
-            printString.append(k.getLabel()).append(" -----> ").append("\n");
+            printString.append(k.label()).append(" -----> ").append("\n");
             for(Edge e : map.get(k)){
-                printString.append("\t").append(e.destination().getLabel()).append(" (").append(e.weight()).append(" ft)\n");
+                printString.append("\t").append(e.destination().label()).append(" (").append(e.weight()).append(" ft)\n");
             }
         }
 
