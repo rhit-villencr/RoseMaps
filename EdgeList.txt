@@ -1,30 +1,37 @@
 SRC_Main Self_Made_Man 137.8
 
 Self_Made_Man SRC_Main 137.8
-Self_Made_Man SRC_Road_1 601
+Self_Made_Man SRC_Road_0 605
 Self_Made_Man Bottom_Deming_SRC_Stairs 200
 
-SRC_Road_1 Self_Made_Man 601
-SRC_Road_1 SRC_West_Parking_Road_1 45
+SRC_Road_0 Self_Made_Man 605
+SRC_Road_0 SRC_West_Parking_Road_0 29
+SRC_Road_0 SRC_West_Entrance 56
 
 Bottom_Deming_SRC_Stairs Self_Made_Man 200
-Bottom_Deming_SRC_Stairs Apartments_Road_6 580
+Bottom_Deming_SRC_Stairs Apartments_Road_7 586 
 
 
-SRC_West_Parking_Road_1 SRC_Road_1 45
-SRC_West_Parking_Road_1 SRC_West_Parking_Road_2 118
+SRC_West_Parking_Road_0 SRC_Road_0 29
+SRC_West_Parking_Road_0 SRC_West_Parking_Road_1 166
 
-SRC_West_Parking_Road_2 SRC_West_Parking_Road_1 118
-SRC_West_Parking_Road_2 Apartments_Road_5 81
-SRC_West_Parking_Road_2 Apartments_Road_4 70
+SRC_West_Parking_Road_1 SRC_West_Parking_Road_0 166
+SRC_West_Parking_Road_1 Apartments_Road_5 47
+SRC_West_Parking_Road_1 Apartments_Road_4 64
+SRC_West_Parking_Road_1 Apartments_Road_6 73
 
-Apartments_Road_5 SRC_West_Parking_Road_2 81
+SRC_West_Entrance SRC_Road_0 56
 
+Apartments_Road_5 SRC_West_Parking_Road_1 47
 Apartments_Road_5 Apartments_Road_6 40
 Apartments_Road_5 Apartments_Road_4 61
 
+Apartments_Road_6 SRC_West_Parking_Road_1 73
 Apartments_Road_6 Apartments_Road_5 40
-Apartments_Road_6 Bottom_Deming_SRC_Stairs 580
+Apartments_Road_6 Apartments_Road_7 42
+
+Apartments_Road_7 Bottom_Deming_SRC_Stairs 586
+Apartments_Road_7 Apartments_Road_6 42
 
 Apartments_Road_4 Apartments_Road_5 61
-Apartments_Road_4 SRC_West_Parking_Road_2 70
+Apartments_Road_4 SRC_West_Parking_Road_1 64

@@ -14,14 +14,16 @@
     <nav class="navbar navbar-expand-sm navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">RoseMaps</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="#settings"><i class="fa fa-cog"></i></a></li>
                     <li class="nav-item"><a class="nav-link" href="#help"><i class="fa fa-question"></i></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#profile"><i class="fa fa-user-circle-o"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#profile"><i class="fa fa-user-circle-o"></i></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -43,7 +45,9 @@
         </div>
         <div id="results-path" class="text-center"></div>
         <div id="map" class="text-center">
-            <img id="rose-map" src="rose-map.png" alt="Rose Map" class="img-fluid">
+            <canvas id = "idCanvas" width = "1023" height = "514" style = "border:2px solid #000000;"></canvas>
+            <img id="rose-map" src="rose-map - Copy.png" alt="Rose Map" usemap="#rosemap" class="img-fluid">
+            <map id="map-id" name="rosemap"></map>
         </div>
     </div>
 

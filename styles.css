@@ -1,15 +1,27 @@
-#overview, #results-path, #map {
+#overview, #results-path{
     text-align: center;
     padding-top: 10px;
     /* padding: 10px; */
+}
+#map{
+    text-align: center;
+    padding-top: 10;
+    position: relative;
 }
 .node-item{
     padding-left: 0;
     margin-bottom: 2px;
 }
 
-#rose-map {
+#rose-map, #idCanvas {
     border: #800000 4px solid;
+    position:absolute;
+    right: 100px;
+    z-index: 0;
+}
+
+.node, #map-id{
+    z-index: 10;
 }
 
 i, .nav-link {

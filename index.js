@@ -51,7 +51,9 @@ const findShortestPath = (graph, startNode, endNode) => {
     console.log(graph)
     distances[endNode] = "Infinity";
     distances = Object.assign(distances, graph[startNode]);
-    let parents = { endNode: null };
+    let parents = {
+        endNode: null
+    };
     for (let child in graph[startNode]) {
         parents[child] = startNode;
     }
@@ -106,6 +108,87 @@ let g = populateGraphFromFile(filePath)
             console.log('Failed to fetch or parse the file.');
         }
     });
+
+function linedraw(ax, ay, bx, by) {
+    var c = document.getElementById("idCanvas");
+    var ctx = c.getContext("2d");
+    ctx.beginPath();
+    ctx.moveTo(ax, ay);
+    ctx.lineTo(bx, by);
+    return ctx
+}
+
+async function updateImageNodes(file) {
+    const map_id = document.getElementById("map-id")
+    let nodeData = '';
+    try {
+        const response = await fetch(file);
+        if (!response.ok) {
+            throw new Error('Failed to fetch the file');
+        }
+        const textData = await response.text();
+        for (const l of textData.split("\n")) {
+            const temp = l.split(" ")
+            nodeData += l + "\n";
+            map_id.innerHTML += `<area class="node" shape="circle" name="${await temp[0]}" coords="${parseFloat(temp[1])+5.0},${parseFloat(temp[2])+4.0},3" href="/">`
+        }
+        // Get all elements with the class name "node"
+        var nodes = await document.getElementsByClassName("node");
+
+        // Iterate through each node and add a click listener
+        for (var i = 0; i < nodes.length; i++) {
+            nodes[i].addEventListener("click", async function (e) {
+                e.preventDefault()
+                // Your click event handling code here
+                const resultsDiv = document.getElementById("results-path")
+                if (start) {
+                    resultsDiv.innerHTML = ""
+                    resultsDiv.innerHTML += `From:\n<ul class="node-item">${e.target.getAttribute("name")}</ul>`
+                    start = false
+                } else {
+                    resultsDiv.innerHTML += `To:\n<ul class="node-item">${e.target.getAttribute("name")}</ul>`
+                    start = true
+                    const e1 = resultsDiv.innerText.split("From:\n")[1].split("\nTo:")[0]
+                    const e2 = e.target.getAttribute("name")
+                    const path = findShortestPath(await g, e1, e2);
+                    console.log(`Start Value: ${e1}\nEnd Value: ${e2}`)
+                    console.log(path)
+                    console.log("============================================================")
+                    resultsDiv.innerHTML = "";
+                    let nodePath = ""
+                    let prev = null;
+                    for (const n of path["path"]) {
+                        resultsDiv.innerHTML += `<ul class="node-item">${n}</ul>`
+                        nodePath += n + " "
+                    }
+                    let ctx;
+                    for (const n of nodePath.split(" ")) {
+                        if (n) {
+                            console.log(n)
+                            for (const m of nodeData.split("\n")) {
+                                const temp = m.split(" ")
+                                if (temp[0] === n) {
+                                    if (prev) {
+                                        ctx = linedraw(prev[1], prev[2], temp[1], temp[2])
+                                    }
+                                    prev = temp
+                                }
+                            }
+                        }
+                    }
+                    ctx.stroke()
+                }
+                console.log("Clicked on a node!" + i);
+            });
+        }
+    } catch (error) {
+        console.error('Error fetching or parsing file:', error);
+        return null;
+    }
+}
+
+let start = true
+updateImageNodes("NodeList.txt")
 populateDropdowns(await g)
 document.getElementById("submit").addEventListener("click", async function (e) {
     const e1 = document.getElementById("start-names").value
@@ -120,5 +203,3 @@ document.getElementById("submit").addEventListener("click", async function (e) {
         resultsDiv.innerHTML += `<ul class="node-item">${n}</ul>`
     }
 });
-
-

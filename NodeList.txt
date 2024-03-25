@@ -1,0 +1,11 @@
+SRC_Main 459 43
+Self_Made_Man 483 87
+Bottom_Deming_SRC_Stairs 518 135
+SRC_Road_0 287 65
+SRC_West_Entrance 304 60
+SRC_West_Parking_Road_0 277 68
+SRC_West_Parking_Road_1 292 122
+Apartments_Road_4 278 139
+Apartments_Road_5 297 140
+Apartments_Road_6 315 140
+Apartments_Road_7 326 139
