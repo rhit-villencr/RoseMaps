@@ -1,7 +1,7 @@
 package domain;
 
 public class Node {
-    private String label;
+    private final String label;
 
     public Node(String label){
         this.label = label;

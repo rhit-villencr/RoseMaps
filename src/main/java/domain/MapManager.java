@@ -6,7 +6,7 @@ import java.util.List;
 
 public class MapManager{
     private final Graph roseMap;
-    private Loader loader;
+    private final Loader loader;
 
     public MapManager(LoaderByFile loader){
         this.loader = loader;
@@ -21,7 +21,7 @@ public class MapManager{
             g.addNode(n);
         }
         for (EdgeData e : edges){
-            g.addEdge(e.getStartNode(), e.getEndNode(), e.getDistance());
+            g.addEdge(e.startNode(), e.endNode(), e.distance());
         }
         return g;
     }
@@ -31,21 +31,17 @@ public class MapManager{
         retString.append(beginningNodeId).append("\n");
         List<Edge> optimalPath = roseMap.findShortestPath(beginningNodeId, destinationNodeId);
         for (Edge e : optimalPath){
-            retString.append(e.getDestination().getLabel()).append("\n");
+            retString.append(e.destination().getLabel()).append("\n");
         }
         retString.append("Total Distance: ").append(getPathLength(optimalPath)).append(" ft");
         return retString.toString();
     }
 
     public Double getPathLength(List<Edge> edges){
-        Double pathLength = 0.0;
+        double pathLength = 0.0;
         for(Edge e : edges){
-            pathLength += e.getWeight();
+            pathLength += e.weight();
         }
         return pathLength;
-    }
-
-    public Graph getGraph(){
-        return this.roseMap;
     }
 }

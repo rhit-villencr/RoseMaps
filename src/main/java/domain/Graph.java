@@ -4,10 +4,10 @@ import java.util.*;
 
 public final class Graph {
 
-    private Map<Node, Set<Edge>> map = new HashMap<>();
+    private final Map<Node, Set<Edge>> map = new HashMap<>();
 
     public void addNode(String node) {
-        map.computeIfAbsent(new Node(node), key -> new HashSet<Edge>());
+        map.computeIfAbsent(new Node(node), key -> new HashSet<>());
     }
 
     public void addEdge(String one, String two, double weight) {
@@ -55,12 +55,12 @@ public final class Graph {
                 break;
             }
             for (Edge edge : map.get(current)) {
-                double newDistance = distances.get(current) + edge.getWeight();
-                if (newDistance < distances.get(edge.getDestination())) {
-                    distances.put(edge.getDestination(), newDistance);
-                    parentEdges.put(edge.getDestination(), edge);
-                    minHeap.remove(edge.getDestination());
-                    minHeap.add(edge.getDestination());
+                double newDistance = distances.get(current) + edge.weight();
+                if (newDistance < distances.get(edge.destination())) {
+                    distances.put(edge.destination(), newDistance);
+                    parentEdges.put(edge.destination(), edge);
+                    minHeap.remove(edge.destination());
+                    minHeap.add(edge.destination());
                 }
             }
         }
@@ -69,7 +69,7 @@ public final class Graph {
         while (parentEdges.containsKey(current)) {
             Edge edge = parentEdges.get(current);
             shortestPath.add(edge);
-            current = edge.getStart();
+            current = edge.start();
         }
         Collections.reverse(shortestPath);
         return shortestPath;
@@ -81,7 +81,7 @@ public final class Graph {
         for(Node k : map.keySet()){
             printString.append(k.getLabel()).append(" -----> ").append("\n");
             for(Edge e : map.get(k)){
-                printString.append("\t").append(e.getDestination().getLabel()).append(" (").append(e.getWeight()).append(" ft)\n");
+                printString.append("\t").append(e.destination().getLabel()).append(" (").append(e.weight()).append(" ft)\n");
             }
         }
 
