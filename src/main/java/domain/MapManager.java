@@ -1,10 +1,12 @@
 package domain;
 import datasource.EdgeData;
+import datasource.Loader;
 import datasource.LoaderByFile;
+import java.util.List;
 
 public class MapManager{
     private final Graph roseMap;
-    private LoaderByFile loader;
+    private Loader loader;
 
     public MapManager(LoaderByFile loader){
         this.loader = loader;
@@ -24,12 +26,23 @@ public class MapManager{
         return g;
     }
 
-    public String shortestPath(String sn, String en){
-        StringBuilder printPath = new StringBuilder();
-        for (Edge e : roseMap.findShortestPath(sn, en)){
-            printPath.append(e.getDestination().getLabel()).append("\n");
+    public String shortestPath(String beginningNodeId, String destinationNodeId){
+        StringBuilder retString = new StringBuilder();
+        retString.append(beginningNodeId).append("\n");
+        List<Edge> optimalPath = roseMap.findShortestPath(beginningNodeId, destinationNodeId);
+        for (Edge e : optimalPath){
+            retString.append(e.getDestination().getLabel()).append("\n");
         }
-        return printPath.toString();
+        retString.append("Total Distance: ").append(getPathLength(optimalPath)).append(" ft");
+        return retString.toString();
+    }
+
+    public Double getPathLength(List<Edge> edges){
+        Double pathLength = 0.0;
+        for(Edge e : edges){
+            pathLength += e.getWeight();
+        }
+        return pathLength;
     }
 
     public Graph getGraph(){

@@ -1,12 +1,16 @@
 @startuml roseMap
 package presentation {
+    class Main{
+        +{static} main(args: String...): void
+    }
     class MapManager {
         -roseMap: Graph
         -loader: Loader
-        +GraphManager(loader: Loader)
+        +MapManager(loader: LoaderBtFile)
         -loadMap(): Graph
-        +findShortestPath(beginningNodeId: String, destinationNodeId: String): List<Edge>
+        +shortestPath(beginningNodeId: String, destinationNodeId: String): String
         +getPathLength(List<Edge>): Double
+        +getGraph(): Graph
     }
 }
 
@@ -14,56 +18,57 @@ package domain {
     class Graph {
         -map: Map<Node, Set<Edge>>
         +Graph()
-        +addNode(nodeId: String): void
-        +addEdge(startNodeId: String, endNodeId: String, distance: Double): void
-        -getNode(nodeId: String): Node
+        +addNode(node: String): void
+        +addEdge(one: String, two: String, weight: Double): void
+        -getNode(label: String): Node
         +findShortestPath(beginningNodeId: String, destinationNodeId: String): List<Edge>
-        +getPathLength(List<Edge>): Double
+        +dijkstra(start: Node, destination: Node): List<Edge>
         +toString(): String
     }
 
     class Node {
-        -id: String
-        +Node(id: String)
-        +getId(): String
-        +toString(): String
+        -label: String
+        +Node(label: String)
+        +getLabel(): String
     }
 
     class Edge {
-        -startNode: Node
-        -endNode: Node
-        -distance: Double
-        +Edge(startNode: Node, endNode: Node, distance: Double)
-        +getEndNode(): Node
-        +getDistance(): Double
-        +toString(): String
+        -start: Node
+        -destination: Node
+        -weight: Double
+        +Edge(start: Node, destination: Node, weight: Double)
+        +getDestination(): Node
+        +getWeight(): Double
+        +getStart(): String
     }
 
     Graph ..> Edge
+    Graph ..> Node
     Edge ..> Node
 }
 
 package datasource {
     interface Loader {
-        +{abstract}loadNodeIds(): List<String>
-        +{abstract}loadEdgeData(): List<EdgeData>
+        +{abstract}getEdges(): List<EdgeData>
+        +{abstract}getNodes(): List<String>
     }
 
     class LoaderByFile {
-        -NodeFileLocation: String
-        -EdgeFileLocation: String
-        +LoaderByFile(NodeFileLocation: String, EdgeFileLocation: String)
-        +loadNodeIds(): List<String>
-        +loadEdgeData(): List<EdgeData>
+        -nodeFile: String
+        -edgeFile: String
+        +LoaderByFile(nodeFile: String, edgeFile: String)
+        +{abstract}getEdges(): List<EdgeData>
+        +{abstract}getNodes(): List<String>
+        - readFile(file: String): Scanner throws FileNotFoundException
     }
 
     class EdgeData {
-        -startNodeId: String
-        -endNodeId: String
+        -startNode: String
+        -endNode: String
         -distance: Double
-        +EdgeData(startNodeId: String, endNodeId: String, distance: Double)
-        +getStartNodeId(): String
-        +getEndNodeId(): String
+        +EdgeData(startNode: String, endNode: String, distance: Double)
+        +getStartNode(): String
+        +getEndNode(): String
         +getDistance(): Double
     }
 
@@ -71,6 +76,14 @@ package datasource {
     Loader ..> EdgeData
 }
 
+Main --> LoaderByFile
+Main --> MapManager
+
 MapManager --> Graph
 MapManager --> Loader
+MapManager ..> LoaderByFile
+MapManager ..> EdgeData
+MapManager ..> Edge
+
+
 @enduml

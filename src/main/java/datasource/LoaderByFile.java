@@ -1,5 +1,4 @@
 package datasource;
-import domain.Loader;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
