@@ -1,0 +1,34 @@
+#overview, #results-path, #map {
+    text-align: center;
+    padding-top: 10px;
+    /* padding: 10px; */
+}
+.node-item{
+    padding-left: 0;
+    margin-bottom: 2px;
+}
+
+#rose-map {
+    border: #800000 4px solid;
+}
+
+i, .nav-link {
+    color: white !important;
+}
+
+.navbar{
+    background-color: #800000
+}
+
+::marker{
+    color: #800000;
+}
+
+.header_col{
+    padding: 3px;
+}
+
+a.nav-link{
+    padding-left: 15px !important;
+    padding-right: 15px  !important;
+}
