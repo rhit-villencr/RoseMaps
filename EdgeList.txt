@@ -1,16 +1,18 @@
-SRC_Main Self_Made_Man 137.8
-
-Self_Made_Man SRC_Main 137.8
-Self_Made_Man SRC_Road_0 605
-Self_Made_Man Bottom_Deming_SRC_Stairs 200
-
-SRC_Road_0 Self_Made_Man 605
+SRC_Road_0 SRC_Road_1 74
 SRC_Road_0 SRC_West_Parking_Road_0 29
 SRC_Road_0 SRC_West_Entrance 56
 
-Bottom_Deming_SRC_Stairs Self_Made_Man 200
-Bottom_Deming_SRC_Stairs Apartments_Road_7 586 
+SRC_Road_1 SRC_Road_0 74
+SRC_Road_1 SRC_Road_2 206
 
+SRC_Road_2 SRC_Road_1 206
+SRC_Road_2 Self_Made_Man 347
+
+SRC_Main Self_Made_Man 137.8
+
+Self_Made_Man SRC_Main 137.8
+Self_Made_Man SRC_Road_2 347
+Self_Made_Man Bottom_Deming_SRC_Stairs 200
 
 SRC_West_Parking_Road_0 SRC_Road_0 29
 SRC_West_Parking_Road_0 SRC_West_Parking_Road_1 166
@@ -35,3 +37,87 @@ Apartments_Road_7 Apartments_Road_6 42
 
 Apartments_Road_4 Apartments_Road_5 61
 Apartments_Road_4 SRC_West_Parking_Road_1 64
+
+
+Bottom_Deming_SRC_Stairs Self_Made_Man 200
+Bottom_Deming_SRC_Stairs Apartments_Road_7 586 
+Bottom_Deming_SRC_Stairs Top_Deming_SRC_Stairs 115
+Bottom_Deming_SRC_Stairs Bottom_Deming_Academic_Stairs 245
+
+Deming_Left_Enterance Union_Path_0 50
+
+Top_Deming_SRC_Stairs Bottom_Deming_SRC_Stairs 115
+Top_Deming_SRC_Stairs Union_Merge 58
+Top_Deming_SRC_Stairs Behind_Deming_Median_Node 57
+Top_Deming_SRC_Stairs Deming_Union_Enterance 70
+
+Union_Merge Top_Deming_SRC_Stairs 58
+Union_Merge Union_Counseling_Exit 43
+Union_Merge Deming_Union_Enterance 37
+Union_Merge Behind_Deming_Median_Node 57
+Union_Merge Union_Median_Node 78
+
+Union_Counseling_Exit Union_Merge 43
+Union_Counseling_Exit Union_Median_Node 46
+
+Union_Median_Node Union_Counseling_Exit 46
+Union_Median_Node Union_Merge 78
+Union_Median_Node Union_Main_Enterance 43
+
+Union_Main_Enterance Union_Median_Node 43
+Union_Main_Enterance Union_Path_0 72
+
+Union_Path_0 Union_Main_Enterance 72
+Union_Path_0 Deming_Left_Enterance 50
+Union_Path_0 Union_Path_1
+
+Union_Path_1 Union_Path_0 23
+Union_Path_1 Union_Path_2 25
+
+Union_Path_2 Union_Path_1 25
+Union_Path_2 Deming_Main_Enterance 45
+Union_Path_2 Union_Path_3 54
+
+Union_Path_3 Union_Path_2 54
+Union_Path_3 Deming_Right_Enterance 52
+Union_Path_3 Union_Path_4 78
+
+Union_Path_4 Union_Path_3 78
+Union_Path_4 Union_Path_5 47
+
+Union_Path_5 Union_Path_6 46
+Union_Path_5 Union_Path_4 47
+
+Union_Path_6 Union_Path_5 46
+Union_Path_6 Deming_Academic_Enterance 73
+Union_Path_6 Union_Path_7 34
+
+Union_Path_7 Bottom_Deming_Academic_Stairs 63
+Union_Path_7 Union_Path_6 34
+
+Deming_Union_Enterance Union_Merge 37
+Deming_Union_Enterance Top_Deming_SRC_Stairs 70
+Deming_Union_Enterance Behind_Deming_Median_Node 29
+
+Behind_Deming_Median_Node Top_Deming_SRC_Stairs 57
+Behind_Deming_Median_Node Top_Deming_Academic_Stairs 110
+Behind_Deming_Median_Node Union_Merge 57
+Behind_Deming_Median_Node Deming_Union_Enterance 29
+
+Top_Deming_Academic_Stairs Behind_Deming_Median_Node 110
+Top_Deming_Academic_Stairs Bottom_Deming_Academic_Stairs 49
+Top_Deming_Academic_Stairs Deming_Academic_Enterance 49
+
+Deming_Main_Enterance Union_Path_2 45
+
+Deming_Right_Enterance Union_Path_3 52
+Deming_Right_Enterance Deming_Academic_Enterance 33
+
+Deming_Academic_Enterance Deming_Right_Enterance 33
+Deming_Academic_Enterance Top_Deming_Academic_Stairs 49
+Deming_Academic_Enterance Union_Path_6 73
+
+Bottom_Deming_Academic_Stairs Top_Deming_Academic_Stairs 49
+Bottom_Deming_Academic_Stairs Union_Path_7 63
+Bottom_Deming_Academic_Stairs Bottom_Deming_SRC_Stairs 245
+

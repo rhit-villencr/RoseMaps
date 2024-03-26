@@ -1,27 +1,32 @@
-#overview, #results-path{
+#results-path{
     text-align: center;
     padding-top: 10px;
+    height: 100px;
     /* padding: 10px; */
-}
-#map{
-    text-align: center;
-    padding-top: 10;
-    position: relative;
 }
 .node-item{
     padding-left: 0;
     margin-bottom: 2px;
 }
 
-#rose-map, #idCanvas {
-    border: #800000 4px solid;
-    position:absolute;
-    right: 100px;
-    z-index: 0;
+#map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust as needed */
 }
 
-.node, #map-id{
+#rose-map {
+    border: #800000 4px solid;
+    position: absolute;
+    right: 250px;
+}
+
+#idCanvas {
+    position: absolute;
+    right: 250px;
     z-index: 10;
+    pointer-events: none;
 }
 
 i, .nav-link {
